@@ -2,7 +2,7 @@
 ---
 ### Descripción  
 En este proyecto se pretende desarrollar un micro-servicio encargado de enviar documentos desde algún lugar en la nube hasta un destinatario.  
- Para ello haré uso de librerías de _python_ encargadas de encaminar los documentos.
+Para ello haré uso de librerías de _python_ encargadas de encaminar los documentos..
 
 ---
 ### Herramientas  
