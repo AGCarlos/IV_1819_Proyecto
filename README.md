@@ -8,8 +8,8 @@ Para ello haré uso de librerías de _python_ encargadas de realizar las conexio
 ### Herramientas  
 La herramientas a utilizar serán:
 - [_Python_](https://www.python.org/) se utilizará como lenguaje de programación
-- [_Django_](https://www.djangoproject.com/) será el framework utilizado
-- Se utilizará el [_sistema de logs_](https://docs.djangoproject.com/en/2.1/topics/logging/) incluido en Django
+- [_Django REST_](http://www.django-rest-framework.org/) será el framework utilizado, que necesita [Django](https://www.djangoproject.com/) y Python
+- Se utilizará el modulo de logs [_loggin_](https://docs.python.org/2/library/logging.html) de Python para manejar los logs.
 - [_Redis_](https://redis.io/) es la BBDD elegida, una base de datos clave-valor
 
 ---
