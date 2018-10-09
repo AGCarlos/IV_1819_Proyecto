@@ -8,9 +8,12 @@ Para ello haré uso de librerías de _python_ encargadas de realizar las conexio
 ### Herramientas  
 La herramientas a utilizar serán:
 - [_Python_](https://www.python.org/) se utilizará como lenguaje de programación
-- [_Django REST_](http://www.django-rest-framework.org/) será el framework utilizado, que necesita [Django](https://www.djangoproject.com/) y Python
+- [_Flask_](http://flask.pocoo.org/) se utilizará como framework (is Fun)
+- [_Redis_](https://redis.io/) se utilizará como BBDD.
+
+### Librerias
+- En cuanto a la descarga de los archivos, se usará el módulo [_urllib.request_](https://docs.python.org/3/library/urllib.html)
 - Se utilizará el modulo de logs [_loggin_](https://docs.python.org/2/library/logging.html) de Python para manejar los logs.
-- [_Redis_](https://redis.io/) es la BBDD elegida, una base de datos clave-valor
 
 ---
 ### Colaboración
