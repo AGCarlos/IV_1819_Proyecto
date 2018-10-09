@@ -9,7 +9,7 @@ Para ello haré uso de librerías de _python_ encargadas de realizar las conexio
 La herramientas a utilizar serán:
 - [_Python_](https://www.python.org/) se utilizará como lenguaje de programación
 - [_Flask_](http://flask.pocoo.org/) se utilizará como framework (is Fun)
-- [_Redis_](https://redis.io/) se utilizará como BBDD.
+- [_Redis_](https://redis.io/) se utilizará como BBDD en memoria.
 
 ### Librerias
 - En cuanto a la descarga de los archivos, se usará el módulo [_urllib.request_](https://docs.python.org/3/library/urllib.html)
