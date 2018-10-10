@@ -32,6 +32,15 @@ class FileDownload:
             print("""Responda con "si" o "no" """)
             dl.Download(archivo)
 
+    def createFile(usuario,contraseña,file):
+        r.set(usuario+":"+contraseña, file)
+
+    def deleteFile(usuario,contraseña,file):
+        r.set(usuario+":"+contraseña, "None")
+
+def devuelveTrue():
+    return True
+
 if __name__ == "__main__":
 
     """Declarar un objeto de la clase"""
