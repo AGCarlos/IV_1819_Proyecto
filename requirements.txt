@@ -1,1 +1,2 @@
 redis
+pytest==3.8.1
