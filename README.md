@@ -2,7 +2,7 @@
 ## Microservicio Web
 ---
 [![Build Status](https://travis-ci.org/AGCarlos/IV_1819_Proyecto.svg?branch=master)](https://travis-ci.org/AGCarlos/IV_1819_Proyecto)
-[![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg)](https://github.com/AGCarlos/IV_1819_Proyecto/issues)
+
 ### Descripción del proyecto  
 En este proyecto se pretende desarrollar un micro-servicio encargado de enviar documentos desde algún lugar en la nube hasta un destinatario.  
 Para ello haré uso de librerías de _python_ encargadas de realizar las conexiones y encaminar los documentos.
