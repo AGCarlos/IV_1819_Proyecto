@@ -1,5 +1,7 @@
 # Proyecto IV: Migues
+
 ---
+[![Build Status](https://travis-ci.org/AGCarlos/IV_1819_Proyecto.svg?branch=master)](https://travis-ci.org/AGCarlos/IV_1819_Proyecto)
 ### Descripción  
 En este proyecto se pretende desarrollar un micro-servicio encargado de enviar documentos desde algún lugar en la nube hasta un destinatario.  
 Para ello haré uso de librerías de _python_ encargadas de realizar las conexiones y encaminar los documentos.
