@@ -1,6 +1,5 @@
 # Proyecto IV: Migues
 ## Microservicio Web
----
 [![Build Status](https://travis-ci.org/AGCarlos/IV_1819_Proyecto.svg?branch=master)](https://travis-ci.org/AGCarlos/IV_1819_Proyecto)
 
 ### Descripción del proyecto  
@@ -26,7 +25,7 @@ La herramientas a utilizar serán:
 Para la realización de tests sobre el proyecto, se utilizará el framework [Pytest](https://docs.pytest.org/en/latest/)
 
 ### Colaboración
-Este micro-servicio pretende sincronizarse con el [micro-servicio de Fernando Talavera Mendoza](https://github.com/Thejokeri/IV-18-19-Proyecto), de manera que mi proyecto obtenga los documentos a enviar del micro-servicio de Fernando.
+Este micro-servicio pretende sincronizarse con el [micro-servicio de Fernando Talavera Mendoza](https://github.com/Thejokeri/IV-18-19-Proyecto), de manera que mi proyecto obtenga los documentos a enviar del micro-servicio de Fernando y ambos se perciban como uno.
 
 | [![Fernando Talavera Mendoza](https://github.com/Thejokeri.png?size=100)](https://github.com/Thejokeri) | [![Carlos Ariza García](https://github.com/AGCarlos.png?size=100)](https://github.com/AGCarlos) |
 | :---: | :---: |
