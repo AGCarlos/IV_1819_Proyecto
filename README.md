@@ -5,10 +5,12 @@
 
 ### Descripción del proyecto  
 En este proyecto se pretende desarrollar un micro-servicio encargado de enviar documentos desde algún lugar en la nube hasta un destinatario.  
-Para ello haré uso de librerías de _python_ encargadas de realizar las conexiones y encaminar los documentos.
+Para ello haré uso de librerías, módulos y frameworks de _python_ encargados de realizar las conexiones y comprobaciones necesarias y enviar los documentos.
 #### Descripción de la clase  
-La clase que contiene las funciones del proyecto  
-
+La clase que contiene las funciones del proyecto se llama _FileDownload_. Esta clase va a realizar mediante sus funciones:
+- La identificación del usuario
+- La comprobación de archivos disponibles para descarga del usuario
+- La descarga de los archivos para el usuario  
 ---
 ### Herramientas  
 La herramientas a utilizar serán:
