@@ -1,24 +1,32 @@
 import urllib.request
 import redis
+#import validators
 
 class FileDownload:
 
-    def checkUser(self,usuario,contraseña):
-        """Comprueba si un usuario tiene algun archivo pendiente.
-        Además realiza la conexión a la BBDD Redis.
+    def checkUser(self,user,passwd):
+        """Check if a user has a pending file to download.
+        Also connect to Redis DDBB.
+
+        Parameters:
+        user -- User used to search files
+        passwd -- Password of the user
         """
         r = redis.Redis()
-        archivo = str(r.get(usuario+":"+contraseña))
+        archivo = str(r.get(user+":"+passwd))
         if archivo == "None":
-            print("El usuario "+usuario+" no tiene ningun archivo pendiente")
+            print("El user "+user+" no tiene ningun archivo pendiente")
             return "None"
         else:
             print("Tiene disponible el archivo:\n "+archivo[2:-1])
             return archivo
 
     def Download(self,archivo):
-        """Pregunta al usuario si quiere descargar un archivo.
-        Descarga el archivo en caso de responder si.
+        """Ask the user to download a file.
+        Download the file in the case yes.
+
+        Parameters:
+        archivo -- The file to download
         """
         dl = FileDownload();
         print("Descargar el archivo ? [si/no]")
@@ -32,11 +40,27 @@ class FileDownload:
             print("""Responda con "si" o "no" """)
             dl.Download(archivo)
 
-    def createFile(usuario,contraseña,file):
-        r.set(usuario+":"+contraseña, file)
+    def createFile(self,user,passwd,file):
+        """Associate a user to a file
 
-    def deleteFile(usuario,contraseña,file):
-        r.set(usuario+":"+contraseña, "None")
+        Parameters:
+        user -- The user to associate.
+        passwd -- The passwd of the user
+        file -- The file to associate from the user
+
+        """
+        r = redis.Redis()
+        r.set(user+":"+passwd, file)
+
+    def deleteFile(self,user,passwd):
+        """Delete a user entry
+
+        Parameters:
+        user -- The user to delete.
+        passwd -- The passwd of the user
+        """
+        r = redis.Redis()
+        r.set(user+":"+passwd, "None")
 
 def devuelveTrue():
     return True
@@ -46,16 +70,16 @@ if __name__ == "__main__":
     """Declarar un objeto de la clase"""
     dl = FileDownload()
 
-    """Pedir credenciales al usuario"""
-    print("Introduzca su usuario")
-    usuario = str(input())
+    """Pedir credenciales al user"""
+    print("Introduzca su user")
+    user = str(input())
     print("Introduzca su contraseña")
-    contraseña = str(input())
+    passwd = str(input())
 
-    """Comprobar si el usuario tiene disponible algun archivo"""
-    archivo = dl.checkUser(usuario,contraseña)
+    """Comprobar si el user tiene disponible algun archivo"""
+    archivo = dl.checkUser(user,passwd)
 
-    """Si el usuario tiene disponible algun archivo, dar opción de descargarlo"""
+    """Si el user tiene disponible algun archivo, dar opción de descargarlo"""
     if archivo != "None":
         dl.Download(archivo)
         print("Donete")
