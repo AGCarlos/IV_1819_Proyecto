@@ -5,6 +5,6 @@ cache: pip
 install:
   - pip install -r requirements.txt
 script:
-  - pytest test.py
+  - pytest -svv test.py
 services:
   - redis-server
