@@ -27,7 +27,7 @@ Los test pasan a través del servicio de integración continua [Travis-CI](https
 
 ### Despliegue
 En estos momentos una aplicación de prueba se encuentra desplegada en [Heroku](https://dashboard.heroku.com/apps), que se puede encontrar en el siguiente enlace:
-- [Aplicación en Heroku](https://filecnc.herokuapp.com/)  
+- Despliegue: [Aplicación en Heroku](https://filecnc.herokuapp.com/)
 
 ### Colaboración
 Este micro-servicio pretende sincronizarse con el [micro-servicio de Fernando Talavera Mendoza](https://github.com/Thejokeri/IV-18-19-Proyecto), de manera que mi proyecto obtenga los documentos a enviar del micro-servicio de Fernando y ambos se perciban como uno.
