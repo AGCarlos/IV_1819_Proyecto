@@ -12,14 +12,19 @@ class FileDownload:
         user -- User used to search files
         passwd -- Password of the user
         """
-        r = redis.Redis()
-        archivo = str(r.get(user+":"+passwd))
-        if archivo == "None":
-            print("El user "+user+" no tiene ningun archivo pendiente")
+
+
+        if type(user) != str or type(passwd) != str:
             return "None"
         else:
-            print("Tiene disponible el archivo:\n "+archivo[2:-1])
-            return archivo
+            r = redis.Redis()
+            archivo = str(r.get(user+":"+passwd))
+            if archivo == "None":
+                print("El user "+user+" no tiene ningun archivo pendiente")
+                return "None"
+            else:
+                print("Tiene disponible el archivo:\n "+archivo[2:-1])
+                return archivo
 
     def Download(self,archivo):
         """Ask the user to download a file.
@@ -53,9 +58,12 @@ class FileDownload:
             #print("URL no válida")
             #return False
         #else:
-        r = redis.Redis()
-        r.set(user+":"+passwd, file)
-        print("Archivo almacenado")
+        if type(user) != str or type(passwd) != str or type(file) != str:
+            return "None"
+        else:
+            r = redis.Redis()
+            r.set(user+":"+passwd, file)
+            print("Archivo almacenado")
 
     def deleteFile(self,user,passwd):
         """Delete a user entry
@@ -64,13 +72,23 @@ class FileDownload:
         user -- The user to delete.
         passwd -- The passwd of the user
         """
-        r = redis.Redis()
-        r.set(user+":"+passwd, "None")
+        if type(user) != str or type(passwd) != str:
+            return "None"
+        else:
+            r = redis.Redis()
+            r.set(user+":"+passwd, "None")
 
     def devuelveTrue(self):
         return True
 
 if __name__ == "__main__":
+
+    r = redis.Redis()
+    print (str(r.get(1)))
+    print (str(r.get(-1)))
+    print (str(r.get(0.0)))
+    str(r.get(1+":"+1))
+
 
     """Declarar un objeto de la clase"""
     dl = FileDownload()
