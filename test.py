@@ -10,6 +10,7 @@ class TestClass(object):
     #Check checkUser
     def test_checkUser(self):
         assert fl.checkUser("lamslf","asdasds") == "None"
+        fl.createFile("fernando","iv","file.png")
         assert fl.checkUser("fernando","iv") != "None"
 
     #Check if file is created correctly
