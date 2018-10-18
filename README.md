@@ -22,7 +22,12 @@ La herramientas a utilizar serán:
 - Se utilizará el modulo de logs [_loggin_](https://docs.python.org/2/library/logging.html) de Python para manejar los logs.
 ---
 ### Tests
-Para la realización de tests sobre el proyecto, se utilizará el framework [Pytest](https://docs.pytest.org/en/latest/)
+Para la realización de tests sobre el proyecto, se utilizará el framework [Pytest](https://docs.pytest.org/en/latest/). Podemos encontrar los test en el archivo _test.py_.  
+Los test pasan a través del servicio de integración continua [Travis-CI](https://travis-ci.org/), que se encuentra configurado para este repositorio.
+
+### Despliegue
+En estos momentos una aplicación de prueba se encuentra desplegada en [Heroku](https://dashboard.heroku.com/apps), que se puede encontrar en el siguiente enlace:
+- [Aplicación en Heroku](https://filecnc.herokuapp.com/)  
 
 ### Colaboración
 Este micro-servicio pretende sincronizarse con el [micro-servicio de Fernando Talavera Mendoza](https://github.com/Thejokeri/IV-18-19-Proyecto), de manera que mi proyecto obtenga los documentos a enviar del micro-servicio de Fernando y ambos se perciban como uno.
