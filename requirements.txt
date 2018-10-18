@@ -2,3 +2,4 @@ redis
 pytest==3.8.1
 validators
 gunicorn
+Flask
