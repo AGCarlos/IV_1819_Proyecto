@@ -1,4 +1,3 @@
-from fileS import devuelveTrue
 from fileS import FileDownload
 import redis
 
@@ -6,7 +5,12 @@ fl = FileDownload()
 class TestClass(object):
     #Check if returns true
     def test_True(self):
-        assert devuelveTrue() == True
+        assert fl.devuelveTrue() == True
+
+    #Check checkUser
+    def test_checkUser(self):
+        assert fl.checkUser("lamslf","asdasds") == "None"
+        assert fl.checkUser("fernando","iv") != "None"
 
     #Check if file is created correctly
     def test_userCreated(self):

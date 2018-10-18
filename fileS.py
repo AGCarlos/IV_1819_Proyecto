@@ -49,8 +49,13 @@ class FileDownload:
         file -- The file to associate from the user
 
         """
+        #if validators.url(file) != "True":
+            #print("URL no válida")
+            #return False
+        #else:
         r = redis.Redis()
         r.set(user+":"+passwd, file)
+        print("Archivo almacenado")
 
     def deleteFile(self,user,passwd):
         """Delete a user entry
@@ -62,8 +67,8 @@ class FileDownload:
         r = redis.Redis()
         r.set(user+":"+passwd, "None")
 
-def devuelveTrue():
-    return True
+    def devuelveTrue(self):
+        return True
 
 if __name__ == "__main__":
 
