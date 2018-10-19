@@ -2,6 +2,7 @@
 ## Microservicio Web
 [![Build Status](https://travis-ci.org/AGCarlos/IV_1819_Proyecto.svg?branch=master)](https://travis-ci.org/AGCarlos/IV_1819_Proyecto)
 
+
 ### Descripción del proyecto  
 En este proyecto se pretende desarrollar un micro-servicio encargado de enviar documentos desde algún lugar en la nube hasta un destinatario.  
 Para ello haré uso de librerías, módulos y frameworks de _python_ encargados de realizar las conexiones y comprobaciones necesarias y enviar los documentos.
@@ -26,8 +27,13 @@ Para la realización de tests sobre el proyecto, se utilizará el framework [Pyt
 Los test pasan a través del servicio de integración continua [Travis-CI](https://travis-ci.org/), que se encuentra configurado para este repositorio.
 
 ### Despliegue
+[![Build Status](https://dev.azure.com/IVCloudP/ProyectoIVCloud/_apis/build/status/AGCarlos.IV_1819_Proyecto)](https://dev.azure.com/IVCloudP/ProyectoIVCloud/_build/latest?definitionId=5)
+![Heroku](https://heroku-badge.herokuapp.com/?app=filecnc)  
+
 En estos momentos una aplicación de prueba se encuentra desplegada en [Heroku](https://dashboard.heroku.com/apps), que se puede encontrar en el siguiente enlace:
-- Despliegue: [Aplicación en Heroku](https://filecnc.herokuapp.com/)
+- Despliegue: [Aplicación en Heroku](https://filecnc.herokuapp.com/)  
+
+El despliegue en Azure se encuentra en proceso
 
 ### Colaboración
 Este micro-servicio pretende sincronizarse con el [micro-servicio de Fernando Talavera Mendoza](https://github.com/Thejokeri/IV-18-19-Proyecto), de manera que mi proyecto obtenga los documentos a enviar del micro-servicio de Fernando y ambos se perciban como uno.
