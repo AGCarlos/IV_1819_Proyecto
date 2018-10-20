@@ -1,9 +1,9 @@
-from flask import Flask, json
+from flask import Flask, json, render_template
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return "Prueba de despliegue para el proyecto de Infraestructura Virtual"
+def index():
+    return render_template("index.html")
 
 @app.route("/status")
 def status():
