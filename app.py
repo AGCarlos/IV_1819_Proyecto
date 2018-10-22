@@ -11,8 +11,8 @@ def home():
 
 @app.route("/status")
 def status():
-    f=open("status.json", "r")
-    data = f.read()
+    with open('status.json') as f:
+        data = json.load(f)
     response = app.response_class(
         response=json.dumps(data),
         status=200,
