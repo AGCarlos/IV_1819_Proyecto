@@ -4,27 +4,26 @@ import redis
 
 class FileDownload:
 
-    def checkUser(self,user,passwd):
+    def checkUser(self,user):
         """Check if a user has a pending file to download.
         Also connect to Redis DDBB.
 
         Parameters:
         user -- User used to search files
-        passwd -- Password of the user
         """
 
 
-        if type(user) != str or type(passwd) != str:
+        if type(user) != str:
             return "None"
         else:
             r = redis.Redis()
-            archivo = str(r.get(user+":"+passwd))
-            if archivo == "None":
+            archivo = str(r.get(1))
+            if archivo == "b'None'":
                 print("El user "+user+" no tiene ningun archivo pendiente")
-                return "None"
+                return "OK"
             else:
                 print("Tiene disponible el archivo:\n "+archivo[2:-1])
-                return archivo
+                return "OK"
 
     def Download(self,archivo):
         """Ask the user to download a file.
@@ -45,49 +44,42 @@ class FileDownload:
             print("""Responda con "si" o "no" """)
             dl.Download(archivo)
 
-    def createFile(self,user,passwd,file):
-        """Associate a user to a file
+    def createFile(self,id,json):
+        """Associate an id to a json
 
         Parameters:
-        user -- The user to associate.
-        passwd -- The passwd of the user
-        file -- The file to associate from the user
+        id -- The id to associate.
+        json -- The json to associate to the id
 
         """
         #if validators.url(file) != "True":
             #print("URL no válida")
             #return False
         #else:
-        if type(user) != str or type(passwd) != str or type(file) != str:
+        if type(id) != int or type(json) != str:
             return "None"
         else:
             r = redis.Redis()
-            r.set(user+":"+passwd, file)
-            print("Archivo almacenado")
+            r.set(id, json)
+            return "OK"
 
-    def deleteFile(self,user,passwd):
+    def deleteFile(self,id):
         """Delete a user entry
 
         Parameters:
-        user -- The user to delete.
-        passwd -- The passwd of the user
+        id -- The json id to delete.
         """
-        if type(user) != str or type(passwd) != str:
+        if type(id) != int:
             return "None"
         else:
             r = redis.Redis()
-            r.set(user+":"+passwd, "None")
+            r.set(id, "None")
+            return "OK"
 
     def devuelveTrue(self):
         return True
 
 if __name__ == "__main__":
-
-    r = redis.Redis()
-    print (str(r.get(1)))
-    print (str(r.get(-1)))
-    print (str(r.get(0.0)))
-    str(r.get(1+":"+1))
 
 
     """Declarar un objeto de la clase"""
