@@ -27,7 +27,7 @@ Para la realización de tests sobre el proyecto, se utilizará el framework [Pyt
 Los test pasan a través del servicio de integración continua [Travis-CI](https://travis-ci.org/), que se encuentra configurado para este repositorio.
 
 ### Despliegue
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku-badge.herokuapp.com/?app=filecnc)  
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://filecnc.herokuapp.com)  
 
 En estos momentos una aplicación de prueba se encuentra desplegada en [Heroku](https://dashboard.heroku.com/apps), que se puede encontrar en el siguiente enlace:
 - Despliegue: [Aplicación en Heroku](https://filecnc.herokuapp.com/status)
