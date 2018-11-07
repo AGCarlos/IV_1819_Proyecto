@@ -1,7 +1,7 @@
 {
   "status": "OK",
   "ejemplo": {
-    "ruta": "/ruta/parametro",
-    "valor": "{JSON: devuelto}"
+    "ruta": "/ejemplo",
+    "valor": "{ 'nombre': 'Carlos', 'datos': { 'edad': 1, 'cumpleaños': '15/5/97' } }"
   }
 }
