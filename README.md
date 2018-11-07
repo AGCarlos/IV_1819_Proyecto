@@ -30,7 +30,7 @@ Los test pasan a través del servicio de integración continua [Travis-CI](https
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://filecnc.herokuapp.com)  
 
 En estos momentos una aplicación de prueba se encuentra desplegada en [Heroku](https://dashboard.heroku.com/apps), que se puede encontrar en el siguiente enlace:
-- Despliegue: [Aplicación en Heroku](https://filecnc.herokuapp.com/status)
+- Despliegue: [Aplicación en Heroku](https://filecnc.herokuapp.com/)
 
 ### Documentación
 Encontramos la documentación [aquí](./doc/README.md)
