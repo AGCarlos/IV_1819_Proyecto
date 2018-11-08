@@ -18,12 +18,12 @@ class FileDownload:
         else:
             r = redis.Redis()
             archivo = str(r.get(1))
-            if archivo == "b'None'":
-                print("El user "+user+" no tiene ningun archivo pendiente")
-                return "OK"
-            else:
-                print("Tiene disponible el archivo:\n "+archivo[2:-1])
-                return "OK"
+            #if archivo == "b'None'":
+                #print("El user "+user+" no tiene ningun archivo pendiente")
+            return "OK"
+            #else:
+                #print("Tiene disponible el archivo:\n "+archivo[2:-1])
+                #return "OK"
 
     def Download(self,archivo):
         """Ask the user to download a file.
@@ -52,14 +52,11 @@ class FileDownload:
         json -- The json to associate to the id
 
         """
-        #if validators.url(file) != "True":
-            #print("URL no válida")
-            #return False
-        #else:
-        if type(id) != str or type(json) != str:
+        if type(id) != str or type(json) != type(dict()):
             return "None"
         else:
             r = redis.Redis()
+            r.delete(id)
             r.hmset(id, json)
             return "OK"
 
@@ -73,7 +70,7 @@ class FileDownload:
             return "None"
         else:
             r = redis.Redis()
-            r.set(id, "None")
+            r.delete(id)
             return "OK"
 
     def devuelveTrue(self):
@@ -82,19 +79,22 @@ class FileDownload:
 if __name__ == "__main__":
 
 
-    """Declarar un objeto de la clase"""
-    dl = FileDownload()
-
-    """Pedir credenciales al user"""
-    print("Introduzca su user")
-    user = str(input())
-    print("Introduzca su contraseña")
-    passwd = str(input())
-
-    """Comprobar si el user tiene disponible algun archivo"""
-    archivo = dl.checkUser(user,passwd)
-
-    """Si el user tiene disponible algun archivo, dar opción de descargarlo"""
-    if archivo != "None":
-        dl.Download(archivo)
-        print("Donete")
+    # """Declarar un objeto de la clase"""
+    # dl = FileDownload()
+    #
+    # """Pedir credenciales al user"""
+    # print("Introduzca su user")
+    # user = str(input())
+    # print("Introduzca su contraseña")
+    # passwd = str(input())
+    #
+    # """Comprobar si el user tiene disponible algun archivo"""
+    # archivo = dl.checkUser(user,passwd)
+    #
+    # """Si el user tiene disponible algun archivo, dar opción de descargarlo"""
+    # if archivo != "None":
+    #     dl.Download(archivo)
+    #     print("Donete")
+    r = redis.Redis()
+    r.hmset("archivaso",{'lmao1':'lmao2','lmao1':'lmao4'})
+    print(r.hmget("archivaso","lmao1"))
