@@ -45,7 +45,7 @@ def add():
 
     jsonf = {
         "id": "1",
-        "nombre": "archivo",
+        "nombre": "file",
         "path": "https://i.ytimg.com/vi/Yp7L1GHaZLI/maxresdefault.jpg",
         "user": "Carlos",
         "fecha": str(datetime.datetime.now()),
@@ -54,9 +54,9 @@ def add():
     }
     #Conectar a Redis para añadir la información
     r = redis.Redis()
-    fl.createFile("archivo",jsonf)
+    fl.createFile("file",jsonf)
 
-    dict = r.hgetall("archivo")
+    dict = r.hgetall("file")
     jsonf = json.dumps(dict)
     jsonf2 = json.loads(jsonf)
     return jsonify(jsonf2)
