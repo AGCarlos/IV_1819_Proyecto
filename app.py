@@ -32,26 +32,34 @@ def ejemplo():
     )
     return response
 
+@app.route("/archivos/<archivo>")
+def muestraArchivos(archivo):
+    r = redis.Redis() #Conectar a Redis
+    dict = r.hgetall(archivo)
+    jsonf = json.dumps(dict)
+    jsonf2 = json.loads(jsonf)
+    return jsonify(jsonf2)
+
 @app.route("/addFiles")
 def add():
 
     jsonf = {
         "id": "1",
         "nombre": "archivo",
-        "path": "https://i.ytimg.com/vi/ADYSC-5OWVM/maxresdefault.jpg",
-        "user": "fernando",
+        "path": "https://i.ytimg.com/vi/Yp7L1GHaZLI/maxresdefault.jpg",
+        "user": "Carlos",
         "fecha": str(datetime.datetime.now()),
         "type": "img",
         "format": "jpg"
     }
-    #conectar a Redis y obtener el siguiente ID
+    #Conectar a Redis para añadir la información
     r = redis.Redis()
-    cont = int(str(r.get("cont"))[2:-1])
-    fl.createFile(cont + 1,jsonf)
+    fl.createFile("archivo",jsonf)
 
-    jsonf = r.get(2)
-    # Load the JSON to a Python list & dump it back out as formatted JSON
-    return jsonify(jsonf)
+    dict = r.hgetall("archivo")
+    jsonf = json.dumps(dict)
+    jsonf2 = json.loads(jsonf)
+    return jsonify(jsonf2)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
