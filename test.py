@@ -48,4 +48,4 @@ class TestClass(object):
         r = redis.Redis()
         fl.createFile("archivo",{'lmao':'lmao'})
         fl.deleteFile("archivo")
-        assert str(r.get(1))[2:-1] == "None"
+        assert str(r.get("archivo")) == "None"
