@@ -1,5 +1,7 @@
 import urllib.request
 import redis
+import os
+
 #import validators
 
 class FileDownload:

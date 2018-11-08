@@ -2,7 +2,6 @@ from flask import Flask, json, render_template
 from fileS import *
 from flask import jsonify
 import datetime
-import os
 
 fl = FileDownload()
 r = fl.conexion("d")
