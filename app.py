@@ -2,9 +2,10 @@ from flask import Flask, json, render_template
 from fileS import *
 from flask import jsonify
 import datetime
-
+import os
 
 fl = FileDownload()
+r = fl.conexion("d")
 
 app = Flask(__name__)
 
@@ -34,7 +35,6 @@ def ejemplo():
 
 @app.route("/archivos/<archivo>")
 def muestraArchivos(archivo):
-    r = redis.Redis() #Conectar a Redis
     dict = r.hgetall(archivo)
     jsonf = json.dumps(dict)
     jsonf2 = json.loads(jsonf)
@@ -53,7 +53,6 @@ def add():
         "format": "jpg"
     }
     #Conectar a Redis para añadir la información
-    r = redis.Redis()
     fl.createFile("file",jsonf)
 
     dict = r.hgetall("file")
