@@ -56,11 +56,11 @@ class FileDownload:
             #print("URL no válida")
             #return False
         #else:
-        if type(id) != int or type(json) != str:
+        if type(id) != str or type(json) != str:
             return "None"
         else:
             r = redis.Redis()
-            r.set(id, json)
+            r.hmset(id, json)
             return "OK"
 
     def deleteFile(self,id):
@@ -69,7 +69,7 @@ class FileDownload:
         Parameters:
         id -- The json id to delete.
         """
-        if type(id) != int:
+        if type(id) != str:
             return "None"
         else:
             r = redis.Redis()
