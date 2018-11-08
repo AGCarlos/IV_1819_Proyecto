@@ -16,7 +16,7 @@ class FileDownload:
             r = redis.Redis()
             return r
         else:
-            r = redis.from_url(os.environ.get("redis://h:p90d63f49afeefa17c338b0345f951b144e3f5e9bd649b4a2e625c3513fd1a5c6@ec2-52-54-174-93.compute-1.amazonaws.com:42199"))
+            r = redis.from_url(os.environ.get("//h:p90d63f49afeefa17c338b0345f951b144e3f5e9bd649b4a2e625c3513fd1a5c6@ec2-52-54-174-93.compute-1.amazonaws.com:42199"))
             return r
 
     def checkUser(self,user):
