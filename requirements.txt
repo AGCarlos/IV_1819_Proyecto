@@ -1,5 +1,4 @@
 redis
-redis-server
 pytest==3.8.1
 validators
 gunicorn
