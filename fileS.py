@@ -16,6 +16,7 @@ class FileDownload:
             r = redis.Redis()
             return r
         else:
+
             redis_url = os.getenv('redis://h:p90d63f49afeefa17c338b0345f951b144e3f5e9bd649b4a2e625c3513fd1a5c6@ec2-52-54-174-93.compute-1.amazonaws.com:42199', 'redis://localhost:6379')
             r = redis.from_url(redis_url)
             return r
@@ -32,7 +33,7 @@ class FileDownload:
         if type(user) != str:
             return "None"
         else:
-            r = conexion("d")
+            r = self.conexion("d")
             archivo = str(r.get(1))
             #if archivo == "b'None'":
                 #print("El user "+user+" no tiene ningun archivo pendiente")
@@ -71,7 +72,7 @@ class FileDownload:
         if type(id) != str or type(json) != type(dict()):
             return "None"
         else:
-            r = conexion("d")
+            r = self.conexion("d")
             r.delete(id)
             r.hmset(id, json)
             return "OK"
@@ -85,7 +86,7 @@ class FileDownload:
         if type(id) != str:
             return "None"
         else:
-            r = conexion("d")
+            r = self.conexion("d")
             r.delete(id)
             return "OK"
 
