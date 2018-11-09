@@ -23,3 +23,11 @@ python-3.6.6
 En Heroku he configurado los despliegues automáticos para que cada vez que suba los archivos fuentes a github se despliegue en Heroku automáticamente.  
 
 ![autoDesploysOnHeroku](../img/autoDep.png)
+
+#### Avances en el proyecto
+
+La idea de  principal funcionalidad de la aplicación es poder acceder a la ruta /archivos y en esa ruta acceder al archivo en cuestion que nos interese, que nos devolvería un JSON que contiene información del archivo, por ejemplo:  
+
+Accedemos a ``archivos/file`` y nos devolvería la información acerca del archivo file.    
+
+Ahora mismo esta funcionalidad solo funciona en local, ya que Redis estan dando problemas al desplegar en Heroku. En cuanto este problema se arregle esta funcionalidad estará totalmente funcional en Heroku.
