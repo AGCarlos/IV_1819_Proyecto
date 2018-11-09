@@ -32,7 +32,7 @@ class FileDownload:
         if type(user) != str:
             return "None"
         else:
-            r = self.conexion("l")
+            r = self.conexion("d")
             archivo = str(r.get(1))
             #if archivo == "b'None'":
                 #print("El user "+user+" no tiene ningun archivo pendiente")
@@ -71,7 +71,7 @@ class FileDownload:
         if type(id) != str or type(json) != type(dict()):
             return "None"
         else:
-            r = self.conexion("l")
+            r = self.conexion("d")
             r.delete(id)
             r.hmset(id, json)
             return "OK"
@@ -85,7 +85,7 @@ class FileDownload:
         if type(id) != str:
             return "None"
         else:
-            r = self.conexion("l")
+            r = self.conexion("d")
             r.delete(id)
             return "OK"
 
