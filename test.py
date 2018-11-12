@@ -2,7 +2,7 @@ from fileS import FileDownload
 import redis
 
 fl = FileDownload()
-r = fl.conexion()
+r = redis.Redis()
 
 class TestClass(object):
     #Check if returns true
