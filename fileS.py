@@ -16,7 +16,7 @@ class FileDownload:
             r = redis.Redis()
             return r
         else:
-            r = redis.from_url(os.environ.get(REDIS_URL))
+            r = redis.from_url(os.environ.get($REDIS_URL))
             return r
 
     def checkUser(self,user):
