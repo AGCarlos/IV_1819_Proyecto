@@ -26,8 +26,10 @@ En Heroku he configurado los despliegues automáticos para que cada vez que suba
 
 #### Avances en el proyecto
 
-La idea de  principal funcionalidad de la aplicación es poder acceder a la ruta /archivos y en esa ruta acceder al archivo en cuestion que nos interese, que nos devolvería un JSON que contiene información del archivo, por ejemplo:  
+La idea de  principal funcionalidad de la aplicación es poder acceder a la ruta /archivos y en esa ruta acceder al archivo en cuestión que nos interese, que nos devolvería un JSON que contiene información del archivo, por ejemplo:  
 
-Accedemos a ``archivos/file`` y nos devolvería la información acerca del archivo file.    
+Accedemos a ``archivos/file1`` y nos devolvería la información acerca del archivo file.    
 
-Ahora mismo esta funcionalidad solo funciona en local, ya que Redis estan dando problemas al desplegar en Heroku. En cuanto este problema se arregle esta funcionalidad estará totalmente funcional en Heroku.
+En este momento están disponibles tres archivos, llamados file1,file2 y file3 en al ruta ``archivos/<archivo>``
+
+Si los archivos no se visualizaran, se pueden generar entrando en la ruta ``/addFiles``, que los añadirá de nuevo a Redis, debido a que el Add-on para Redis en licencia gratuita de Heroku no mantiene persistencia en algunos casos.
