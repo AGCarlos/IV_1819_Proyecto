@@ -93,24 +93,3 @@ class FileDownload:
 
 
 if __name__ == "__main__":
-
-
-    # """Declarar un objeto de la clase"""
-    # dl = FileDownload()
-    #
-    # """Pedir credenciales al user"""
-    # print("Introduzca su user")
-    # user = str(input())
-    # print("Introduzca su contraseña")
-    # passwd = str(input())
-    #
-    # """Comprobar si el user tiene disponible algun archivo"""
-    # archivo = dl.checkUser(user,passwd)
-    #
-    # """Si el user tiene disponible algun archivo, dar opción de descargarlo"""
-    # if archivo != "None":
-    #     dl.Download(archivo)
-    #     print("Donete")
-    # r = redis.Redis()
-    # r.hmset("archivaso",{'lmao1':'lmao2','lmao1':'lmao4'})
-    # print(r.hmget("archivaso","lmao1"))
