@@ -11,25 +11,34 @@ app = Flask(__name__)
 
 @app.route("/")
 def status():
-    dict = str(r.hgetall("status")).replace(' b',' ')
-    dict = dict.replace('b','',1)
-    dict = ast.literal_eval(dict)
+    status = {
+      "status": "OK",
+      "ejemplo": {
+        "ruta": "/ejemplo",
+        "valor": "{ 'nombre': 'Carlos', 'datos': { 'edad': 1, 'cumpleaños': '15/5/97' } }"
+      }
+    }
 
     response = app.response_class(
-        response=json.dumps(dict),
+        response=json.dumps(status),
         status=200,
         mimetype='application/json'
     )
     return response
 
+
 @app.route("/ejemplo")
 def ejemplo():
-    dict = str(r.hgetall("ejemplo")).replace(' b',' ')
-    dict = dict.replace('b','',1)
-    dict = ast.literal_eval(dict)
+    ejemplo = {
+      "nombre": "Carlos",
+      "datos": {
+        "edad": 1,
+        "cumpleaños": "15/5/97"
+      }
+    }
 
     response = app.response_class(
-        response=json.dumps(dict),
+        response=json.dumps(ejemplo),
         status=200,
         mimetype='application/json'
     )
@@ -42,7 +51,7 @@ def muestraArchivos(archivo):
     dict = ast.literal_eval(dict)
 
     response = app.response_class(
-        response=json.dumps(dict ),
+        response=json.dumps(dict),
         status=200,
         mimetype='application/json'
     )
@@ -50,26 +59,6 @@ def muestraArchivos(archivo):
 
 @app.route("/addFiles")
 def add():
-
-    jsonf = {
-      "status": "OK",
-      "ejemplo": {
-        "ruta": "/ejemplo",
-        "valor": "{ 'nombre': 'Carlos', 'datos': { 'edad': 1, 'cumpleaños': '15/5/97' } }"
-      }
-    }
-    #Conectar a Redis para añadir la información
-    fl.createFile("status",jsonf)
-
-    jsonf = {
-      "nombre": "Carlos",
-      "datos": {
-        "edad": 1,
-        "cumpleaños": "15/5/97"
-      }
-    }
-    #Conectar a Redis para añadir la información
-    fl.createFile("ejemplo",jsonf)
 
     jsonf = {
         "id": "1",
@@ -81,7 +70,7 @@ def add():
         "format": "jpg"
     }
     #Conectar a Redis para añadir la información
-    fl.createFile("file1",jsonf)
+    fl.createFile("file1",jsonf,r)
 
     jsonf = {
         "id": "2",
@@ -93,7 +82,7 @@ def add():
         "format": "jpg"
     }
     #Conectar a Redis para añadir la información
-    fl.createFile("file2",jsonf)
+    fl.createFile("file2",jsonf,r)
 
     jsonf = {
         "id": "3",
@@ -105,7 +94,7 @@ def add():
         "format": "jpg"
     }
     #Conectar a Redis para añadir la información
-    fl.createFile("file3",jsonf)
+    fl.createFile("file3",jsonf,r)
 
     response = app.response_class(
         response=json.dumps(jsonf),

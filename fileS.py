@@ -11,7 +11,7 @@ class FileDownload:
         r = redis.from_url(os.environ["REDIS_URL"])
         return r
 
-    def checkUser(self,user):
+    def checkUser(self,user,r):
         """Check if a user has a pending file to download.
         Also connect to Redis DDBB.
 
@@ -23,7 +23,6 @@ class FileDownload:
         if type(user) != str:
             return "None"
         else:
-            r = self.conexion()
             archivo = str(r.get(1))
             #if archivo == "b'None'":
                 #print("El user "+user+" no tiene ningun archivo pendiente")
@@ -51,32 +50,32 @@ class FileDownload:
             print("""Responda con "si" o "no" """)
             dl.Download(archivo)
 
-    def createFile(self,id,json):
+    def createFile(self,id,json,r):
         """Associate an id to a json
 
         Parameters:
         id -- The id to associate.
         json -- The json to associate to the id
+        r -- Redis connection
 
         """
         if type(id) != str or type(json) != type(dict()):
             return "None"
         else:
-            r = self.conexion()
             r.delete(id)
             r.hmset(id, json)
             return "OK"
 
-    def deleteFile(self,id):
+    def deleteFile(self,id,r):
         """Delete a user entry
 
         Parameters:
         id -- The json id to delete.
+        r -- Redis connection
         """
         if type(id) != str:
             return "None"
         else:
-            r = self.conexion()
             r.delete(id)
             return "OK"
 
