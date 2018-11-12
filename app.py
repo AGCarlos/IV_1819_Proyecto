@@ -55,6 +55,7 @@ def add():
     fl.createFile("file",jsonf)
 
     dict = r.hgetall("file")
+    return str(dict)
     jsonf = json.dumps(dict)
     jsonf2 = json.loads(jsonf)
     return jsonify(jsonf2)
