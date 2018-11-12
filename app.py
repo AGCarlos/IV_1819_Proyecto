@@ -1,6 +1,7 @@
 from flask import Flask, json, render_template
 from fileS import *
 from flask import jsonify
+import ast
 import datetime
 
 fl = FileDownload()
@@ -36,10 +37,10 @@ def ejemplo():
 def muestraArchivos(archivo):
     dict = str(r.hgetall(archivo)).replace(' b',' ')
     dict = dict.replace('b','',1)
-    dict = json.dumps(dict)
-    data = json.loads(dict)
+    dict = ast.literal_eval(dict)
+
     response = app.response_class(
-        response=json.dumps(data),
+        response=json.dumps(dict ),
         status=200,
         mimetype='application/json'
     )
@@ -50,7 +51,7 @@ def add():
 
     jsonf = {
         "id": "1",
-        "nombre": "file",
+        "nombre": "file1",
         "path": "https://i.ytimg.com/vi/Yp7L1GHaZLI/maxresdefault.jpg",
         "user": "Carlos",
         "fecha": str(datetime.datetime.now()),
@@ -58,13 +59,38 @@ def add():
         "format": "jpg"
     }
     #Conectar a Redis para añadir la información
-    fl.createFile("file",jsonf)
+    fl.createFile("file1",jsonf)
 
-    dict = str(r.hgetall("file")).replace(' b',' ')
-    dict = dict.replace('b','',1)
-    jsonf = json.dumps(dict)
-    jsonf2 = json.loads(jsonf)
-    return jsonify(jsonf2)
+    jsonf = {
+        "id": "2",
+        "nombre": "file2",
+        "path": "https://i.ytimg.com/vi/Yp7L1GHaZLI/maxresdefault.jpg",
+        "user": "Carlos",
+        "fecha": str(datetime.datetime.now()),
+        "type": "img",
+        "format": "jpg"
+    }
+    #Conectar a Redis para añadir la información
+    fl.createFile("file2",jsonf)
+
+    jsonf = {
+        "id": "3",
+        "nombre": "file3",
+        "path": "https://i.ytimg.com/vi/Yp7L1GHaZLI/maxresdefault.jpg",
+        "user": "Wendousa",
+        "fecha": str(datetime.datetime.now()),
+        "type": "img",
+        "format": "jpg"
+    }
+    #Conectar a Redis para añadir la información
+    fl.createFile("file3",jsonf)
+
+    response = app.response_class(
+        response=json.dumps(jsonf),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
