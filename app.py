@@ -11,11 +11,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def status():
-    with open('status.json') as f:
-        data = json.load(f)
+    dict = str(r.hgetall("status")).replace(' b',' ')
+    dict = dict.replace('b','',1)
+    dict = ast.literal_eval(dict)
 
     response = app.response_class(
-        response=json.dumps(data),
+        response=json.dumps(dict),
         status=200,
         mimetype='application/json'
     )
@@ -23,11 +24,12 @@ def status():
 
 @app.route("/ejemplo")
 def ejemplo():
-    with open('ejemplo.json') as f:
-        data = json.load(f)
+    dict = str(r.hgetall("ejemplo")).replace(' b',' ')
+    dict = dict.replace('b','',1)
+    dict = ast.literal_eval(dict)
 
     response = app.response_class(
-        response=json.dumps(data),
+        response=json.dumps(dict),
         status=200,
         mimetype='application/json'
     )
@@ -48,6 +50,26 @@ def muestraArchivos(archivo):
 
 @app.route("/addFiles")
 def add():
+
+    jsonf = {
+      "status": "OK",
+      "ejemplo": {
+        "ruta": "/ejemplo",
+        "valor": "{ 'nombre': 'Carlos', 'datos': { 'edad': 1, 'cumpleaños': '15/5/97' } }"
+      }
+    }
+    #Conectar a Redis para añadir la información
+    fl.createFile("status",jsonf)
+
+    jsonf = {
+      "nombre": "Carlos",
+      "datos": {
+        "edad": 1,
+        "cumpleaños": "15/5/97"
+      }
+    }
+    #Conectar a Redis para añadir la información
+    fl.createFile("ejemplo",jsonf)
 
     jsonf = {
         "id": "1",
