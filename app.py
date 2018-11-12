@@ -56,8 +56,7 @@ def add():
 
     dict = str(r.hgetall("file")).replace(' b',' ')
     dict = dict.replace('b','',1)
-    return str(dict)
-    jsonf = json.dumps(mydict)
+    jsonf = json.dumps(dict)
     jsonf2 = json.loads(jsonf)
     return jsonify(jsonf2)
 
