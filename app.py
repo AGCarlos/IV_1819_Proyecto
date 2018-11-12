@@ -36,8 +36,9 @@ def ejemplo():
 def muestraArchivos(archivo):
     dict = str(r.hgetall(archivo)).replace(' b',' ')
     dict = dict.replace('b','',1)
+    data = json.load(dict) 
     response = app.response_class(
-        response=json.dumps(dict),
+        response=json.dumps(data),
         status=200,
         mimetype='application/json'
     )
