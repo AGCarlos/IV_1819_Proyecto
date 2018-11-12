@@ -3,7 +3,6 @@ import redis
 import os
 
 #import validators
-REDIS_URL = "redis://h:p90d63f49afeefa17c338b0345f951b144e3f5e9bd649b4a2e625c3513fd1a5c6@ec2-52-54-174-93.compute-1.amazonaws.com:42199"
 class FileDownload:
 
     def conexion(self,mode):
@@ -16,7 +15,8 @@ class FileDownload:
             r = redis.Redis()
             return r
         else:
-            r = redis.from_url(os.environ.get($REDIS_URL))
+            redis_url = os.getenv('redis://h:p90d63f49afeefa17c338b0345f951b144e3f5e9bd649b4a2e625c3513fd1a5c6@ec2-52-54-174-93.compute-1.amazonaws.com:42199', 'redis://localhost:6379')
+            r = redis.from_url(redis_url)
             return r
 
     def checkUser(self,user):
