@@ -34,7 +34,8 @@ def ejemplo():
 
 @app.route("/archivos/<archivo>")
 def muestraArchivos(archivo):
-    dict = r.hgetall(archivo)
+    dict = str(r.hgetall(archivo)).replace(' b',' ')
+    dict = dict.replace('b','',1)[1:-1]
     jsonf = json.dumps(dict)
     jsonf2 = json.loads(jsonf)
     return jsonify(jsonf2)
@@ -55,7 +56,7 @@ def add():
     fl.createFile("file",jsonf)
 
     dict = str(r.hgetall("file")).replace(' b',' ')
-    dict = dict.replace('b','',1)
+    dict = dict.replace('b','',1)[1:-1]
     jsonf = json.dumps(dict)
     jsonf2 = json.loads(jsonf)
     return jsonify(jsonf2)
