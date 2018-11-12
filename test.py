@@ -2,7 +2,7 @@ from fileS import FileDownload
 import redis
 
 fl = FileDownload()
-r = fl.conexion("l")
+r = fl.conexion()
 
 class TestClass(object):
     #Check if returns true
@@ -45,4 +45,4 @@ class TestClass(object):
     def test_userDeleted(self):
         fl.createFile("archivo",{'lmao':'lmao'})
         fl.deleteFile("archivo")
-        assert str(r.get("archivo")) == "None"
+        assert str(r.hmget("archivo","lmao"))[1:-1] == "None"
