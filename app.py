@@ -55,8 +55,8 @@ def add():
     fl.createFile("file",jsonf)
 
     dict = r.hgetall("file")
-    mydict = {k: unicode(v).encode("utf-8") for k,v in dict.iteritems()}
-    return str(mydict)
+    dict = dict.decode('utf-8', 'ignore')
+    return str(dict)
     jsonf = json.dumps(mydict)
     jsonf2 = json.loads(jsonf)
     return jsonify(jsonf2)
