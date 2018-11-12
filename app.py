@@ -55,6 +55,7 @@ def add():
     fl.createFile("file",jsonf)
 
     dict = str(r.hgetall("file")).replace(' b',' ')
+    dict = dict.replace('b','',1)
     return str(dict)
     jsonf = json.dumps(mydict)
     jsonf2 = json.loads(jsonf)
