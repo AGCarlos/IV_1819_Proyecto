@@ -35,10 +35,13 @@ def ejemplo():
 @app.route("/archivos/<archivo>")
 def muestraArchivos(archivo):
     dict = str(r.hgetall(archivo)).replace(' b',' ')
-    dict = dict.replace('b','',1)[1:-1]
-    jsonf = json.dumps(dict)
-    jsonf2 = json.loads(jsonf)
-    return jsonify(jsonf2)
+    dict = dict.replace('b','',1)
+    response = app.response_class(
+        response=json.dumps(dict),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 @app.route("/addFiles")
 def add():
@@ -56,7 +59,7 @@ def add():
     fl.createFile("file",jsonf)
 
     dict = str(r.hgetall("file")).replace(' b',' ')
-    dict = dict.replace('b','',1)[1:-1]
+    dict = dict.replace('b','',1)
     jsonf = json.dumps(dict)
     jsonf2 = json.loads(jsonf)
     return jsonify(jsonf2)
