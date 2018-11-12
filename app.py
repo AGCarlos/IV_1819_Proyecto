@@ -54,7 +54,7 @@ def add():
     #Conectar a Redis para añadir la información
     fl.createFile("file",jsonf)
 
-    dict = r.hgetall("file").decode('utf-8')
+    dict = r.hgetall("file").replace('b',' ')
     return str(dict)
     jsonf = json.dumps(mydict)
     jsonf2 = json.loads(jsonf)
