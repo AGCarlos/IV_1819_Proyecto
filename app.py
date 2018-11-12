@@ -4,7 +4,7 @@ from flask import jsonify
 import datetime
 
 fl = FileDownload()
-r = fl.conexion("l")
+r = fl.conexion("d")
 
 app = Flask(__name__)
 
