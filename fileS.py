@@ -1,4 +1,5 @@
-import urllib.request
+# -*- coding: utf-8 -*-
+#import urllib.request
 import redis
 import os
 
@@ -43,7 +44,7 @@ class FileDownload:
         respuesta = str(input())
         if respuesta == "si":
             print( "Descargando el archivo con urllib en carpeta de descargas")
-            urllib.request.urlretrieve(archivo[2:-1], '/home/carlos/Descargas/noelleSilva.jpg')
+            #urllib.request.urlretrieve(archivo[2:-1], '/home/carlos/Descargas/noelleSilva.jpg')
         elif respuesta == "no":
             print("No se descargará el archivo")
         else:

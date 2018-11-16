@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, json, render_template
 from fileS import *
 from flask import jsonify
@@ -10,6 +11,24 @@ r = fl.conexion()
 app = Flask(__name__)
 
 @app.route("/")
+def index():
+    status = {
+      "status": "OK",
+      "ejemplo": {
+        "ruta": "/ejemplo",
+        "valor": "{ 'nombre': 'Carlos', 'datos': { 'edad': 1, 'cumpleaños': '15/5/97' } }"
+      }
+    }
+
+    response = app.response_class(
+        response=json.dumps(status),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+
+@app.route("/status")
 def status():
     status = {
       "status": "OK",
@@ -104,4 +123,4 @@ def add():
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+    app.run(host='0.0.0.0', port=80,debug=True, use_reloader=True)
