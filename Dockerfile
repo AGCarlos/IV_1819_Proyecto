@@ -10,7 +10,7 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-# Make port 80 available to the world outside this container
+# Abrir puerto 80
 EXPOSE 80
 
 # Variables
