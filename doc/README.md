@@ -155,4 +155,4 @@ Después de estos pasos, la imagen está construida y desplegada en la aplicaci�
 Para desplegar en Zeit desde Linux, descargamos de la [web oficial](https://zeit.co/download#now-cli) un ejecutable que ejecutaremos en nuestro repositorio, introducimos nuestros credenciales de Zeit y la aplicación se despliega automáticamente.   
 Encontramos el status de la aplicación desplegado en el siguiente enlace:
 
-- Despliegue: [App en Zeit](https://iv1819proyecto-vrynkyytrf.now.sh)
+- Despliegue: [App en Zeit](https://iv1819proyecto-vrynkyytrf.now.sh/status)
