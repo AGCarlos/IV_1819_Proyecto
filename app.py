@@ -88,7 +88,7 @@ def add():
         "type": "img",
         "format": "jpg"
     }
-    #Conectar a Redis para añadir la información
+    #Conectar a Redis para añadirr la información
     fl.createFile("file1",jsonf,r)
 
     jsonf = {
