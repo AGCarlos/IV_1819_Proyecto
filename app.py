@@ -123,4 +123,7 @@ def add():
     return response
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80,debug=True, use_reloader=True)
+    if 'PORT' in os.environ: p = os.environ['PORT']
+    else: p = 80
+
+    app.run(host="0.0.0.0", port=p)
