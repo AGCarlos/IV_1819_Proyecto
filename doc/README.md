@@ -1,7 +1,7 @@
 # Documentación del proyecto
 ---
-### Despliegue de la Aplicación
-Para realizarlo he utilizado la documentación de [Heroku](https://dashboard.heroku.com/apps) y este [tutorial](https://github.com/datademofun/heroku-basic-flask) de un repositorio de Github de _datademofun_.  
+### Despliegue de la Aplicación en Heroku
+Para realizar el despliegue he utilizado la documentación de [Heroku](https://dashboard.heroku.com/apps) y este [tutorial](https://github.com/datademofun/heroku-basic-flask) de un repositorio de Github de _datademofun_.  
 Podemos encontrar desplegada la aplicación en :
 -  [App en Heroku](https://filecnc.herokuapp.com/) donde encontramos el status
 -  [Ejemplo de la aplicación](https://filecnc.herokuapp.com/ejemplo) donde se devuelve un JSON también  
@@ -92,6 +92,7 @@ El apartado anterior muestra cómo construir nuestra imagen manualmente, pero he
 ![autoDesploysOnHeroku](../img/autoDocker.gif)  
 
 Esperará a que pasen los test del repositorio antes de construir la imagen.
+
 ##### Utilizando la aplicación
 Se ha creado y desplegado una imagen de la aplicación en DockerHub, en [este repositorio](https://hub.docker.com/r/carlosag/iv_1819_proyecto/).  
 Para poder utilizar la imagen desde cualquier máquina Linux, debemos utilizar esta orden para poder arrancar la aplicación, que utilizará la imagen del repositorio anterior:
@@ -104,3 +105,54 @@ Una vez está ejecutando la aplicación podemos acceder a ella desde: ``http://0
 
 Para acceder desde otra máquina Macintosh o Windows, como Docker crea una máquina virtual será necesario obtener su IP para poder acceder, con la orden:
 ``docker-machine ip ``.
+
+#### Despliegue de la imagen
+##### Heroku
+Para realizar el despliegue he creado otra app en Heroku, llamada _filecnc-docker_. La vinculamos a nuestro repositorio de Github para que obtenga los archivos necesarios para el despliegue.
+
+![confAppHeroku](../img/confApp.png)   
+
+Los pasos para realizar el despliegue los encontramos en su [documentación](https://devcenter.heroku.com/categories/deploying-with-docker), que describiré brevemente:  
+
+1. Creamos en nuestro proyecto el archivo _heroku.yml_, que indica a Heroku donde está el _Dockerfile_ para crear la imagen y la orden para ejecutar la aplicación.  
+
+```
+build:
+  docker:
+    web: Dockerfile
+run:
+web: gunicorn app:app --log-file=-
+```
+
+2. Nos identificamos en el registro de Heroku:
+
+```
+heroku container:login
+```
+
+3. Le decimos a heroku que la nueva aplicación va a ser un contenedor:
+
+```
+heroku stack:set container -a filecnc-docker
+```
+
+4. Subimos la imagen a la nueva aplicación de Heroku:
+
+```
+heroku container:push web --app filecnc-docker
+```
+
+5. Desplegamos la aplicación:
+
+```
+heroku container:release web --app filecnc-docker
+```
+Después de estos pasos, la imagen está construida y desplegada en la aplicación a través del Dockefile. Podemos encontrarla aquí:
+- [App Heroku Docker](https://filecnc-docker.herokuapp.com/)
+
+##### Zeit
+
+Para desplegar en Zeit desde Linux, descargamos de la [web oficial](https://zeit.co/download#now-cli) un ejecutable que ejecutaremos en nuestro repositorio, introducimos nuestros credenciales de Zeit y la aplicación se despliega automáticamente.   
+Encontramos el status de la aplicación desplegado en el siguiente enlace:
+
+- Despliegue: [App en Zeit](https://iv1819proyecto-vrynkyytrf.now.sh)
