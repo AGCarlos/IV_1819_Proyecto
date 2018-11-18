@@ -33,6 +33,7 @@ Encontramos la aplicación desplegada en [Heroku](https://dashboard.heroku.com/a
 - Despliegue: [Aplicación en Heroku](https://filecnc.herokuapp.com/)
 
 Encontramos la aplicación desplegada en Heroku con Docker, que se puede encontrar en el siguiente enlace:
+- Enlace a DockerHub: App en [DockerHub](https://hub.docker.com/r/carlosag/iv_1819_proyecto/)
 - Contenedor: [Aplicación en Heroku](https://filecnc-docker.herokuapp.com/status)
 ### Documentación
 Encontramos la documentación [aquí](./doc/README.md)
