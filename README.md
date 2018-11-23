@@ -37,11 +37,3 @@ Encontramos la aplicación desplegada en Heroku con Docker, que se puede encontr
 - Contenedor: [Aplicación en Heroku](https://filecnc-docker.herokuapp.com/status)
 ### Documentación
 Encontramos la documentación [aquí](./doc/README.md)
-
-
-### Colaboración
-Este micro-servicio pretende sincronizarse con el [micro-servicio de Fernando Talavera Mendoza](https://github.com/Thejokeri/IV-18-19-Proyecto), de manera que mi proyecto obtenga los documentos a enviar del micro-servicio de Fernando y ambos se perciban como uno.
-
-| [![Fernando Talavera Mendoza](https://github.com/Thejokeri.png?size=100)](https://github.com/Thejokeri) | [![Carlos Ariza García](https://github.com/AGCarlos.png?size=100)](https://github.com/AGCarlos) |
-| :---: | :---: |
-| [Fernando Talavera Mendoza](https://github.com/Thejokeri) | [Carlos Ariza García](https://github.com/AGCarlos) |
