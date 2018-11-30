@@ -2,7 +2,20 @@
 ---
 ### Funcionalidad de la aplicación
 
-La idea de  principal funcionalidad de la aplicación es poder acceder a la ruta /archivos y en esa ruta acceder al archivo en cuestión que nos interese, que nos devolvería un JSON que contiene información del archivo, por ejemplo:  
+La idea de principal funcionalidad de la aplicación es poder acceder a la ruta /archivos y en esa ruta acceder al archivo en cuestión que nos interese, que nos devolvería un JSON que contiene información del archivo, por ejemplo:  
+
+#### Ejemplo
+En la ruta /ejemplo encontramos un json de ejemplo que nos devuelve:
+```
+{"datos":
+  {"cumpleaños": "15/5/97",
+   "edad": 1
+  },
+ "nombre": "Carlos"
+}
+```
+
+#### Funcionalidad
 
 Accedemos a ``archivos/file1`` y nos devolvería la información acerca del archivo file.    
 
