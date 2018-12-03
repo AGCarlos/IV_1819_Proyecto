@@ -9,9 +9,9 @@ Podemos encontrar desplegada la aplicación en :
 #### Archivos de configuración
 - El archivo [**Procfile**](https://github.com/AGCarlos/IV_1819_Proyecto/blob/master/Procfile) se utiliza para especificar a Heroku como iniciar la aplicación web, en este caso con el servidor web gunicorn, de esta manera:  
 ```
-web: gunicorn app:app --log-file=-
+web: gunicorn app:app
 ```
-Especificamos el servidor, la aplicación que vamos a usar y además añadimos opciones para logs.
+Especificamos el servidor y la aplicación que vamos a usar.
 - Utilizamos el archivo [**runtime**](https://github.com/AGCarlos/IV_1819_Proyecto/blob/master/runtime.txt) para especificarle a Heroku que estamos desplegando una aplicación de Python, añadiendo esto al archivo:  
 ```
 python-3.6.6
