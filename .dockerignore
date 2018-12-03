@@ -7,4 +7,11 @@ __pycache__/
 LICENSE
 travis.log
 now-linux
+now.json
+runtime.txt
+Procfile
+heroku.yml
+test.py
+pruebas.py
+README.md
 .gitignore
