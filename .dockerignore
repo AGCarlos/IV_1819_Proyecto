@@ -1,9 +1,9 @@
-/doc
-/img
-/env
-/.pytest_cache
-/__pycache__
-/.git
+doc
+img
+env
+.pytest_cache
+__pycache__
+.git
 LICENSE
 travis.log
 now-linux

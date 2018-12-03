@@ -33,7 +33,8 @@ ENV NAME World
 # Aplicación que se ejecutará al lanzar el contenedor
 CMD ["python", "app.py"]
 ```
-Cómo la aplicación utiliza Redis, para conectarse necesita una variable de entorno, que ha sido especificada en el Dockerfile, pero se asigna en tiempo de ejecución de manera que no se vulnere la clave, podemos verlo en el apartado de variables del Dockerfile. Los mismos comentarios del archivo lo explican.
+Cómo la aplicación utiliza Redis, para conectarse necesita una variable de entorno, que ha sido especificada en el Dockerfile, pero se asigna en tiempo de ejecución de manera que no se vulnere la clave, podemos verlo en el apartado de variables del Dockerfile. Los mismos comentarios del archivo lo explican.  
+Además se añade el archivo .dockerignore para que no se copien los archivos que no sean necesarios a la imagen.
 ##### Construyendo la imagen
 
 Para construir la imagen utilizamos la siguiente orden:
