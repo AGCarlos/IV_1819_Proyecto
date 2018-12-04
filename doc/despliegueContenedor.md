@@ -35,26 +35,11 @@ CMD ["python", "app.py"]
 ```
 Cómo la aplicación utiliza Redis, para conectarse necesita una variable de entorno, que ha sido especificada en el Dockerfile, pero se asigna en tiempo de ejecución de manera que no se vulnere la clave, podemos verlo en el apartado de variables del Dockerfile. Los mismos comentarios del archivo lo explican.  
 Además se añade el archivo .dockerignore para que no se copien los archivos que no sean necesarios a la imagen.
-##### Construyendo la imagen
+##### Construcción automatizada de la imagen
+He configurado Docker para que cada vez que se suben los archivos fuentes a Github se construya de nuevo:  
 
-Para construir la imagen utilizamos la siguiente orden:
-```
-docker build --build-arg buildtime_variable=$REDIS_URL -t nombreContenedor .
-```  
-Aquí podemos ver como se asigna en tiempo de ejecución la variable para la conexión de Redis.  
-Una vez construida, le asignamos un tag, y está lista para subirla a DockerHub:
-```
-docker tag nombreImagen carlosag/iv_1819_proyecto:tag   
-```
-Cuando la imagen está construida y tageada, procedemos a subirla a DockerHub:
-```
-docker push carlosag/iv_1819_proyecto:tag
-```  
-Para lanzar el contenedor posteriormente no será necesario realizar estos pasos, son pasos ajenos a la ejecución, solo necesario para realizar cambios.  
-##### Construcción automatizada
-El apartado anterior muestra cómo construir nuestra imagen manualmente, pero he configurado Docker para que cada vez que se suben los archivos fuentes a Github se construya de nuevo:  
-
-![autoDesploysOnHeroku](../img/autoDocker.gif)  
+![autoDesploysOnHeroku](../img/autoDocker.gif)
+![desployDocker](../img/docker.png)  
 
 Esperará a que pasen los test del repositorio antes de construir la imagen.
 
