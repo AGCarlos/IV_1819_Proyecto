@@ -39,7 +39,7 @@ Además se añade el archivo .dockerignore para que no se copien los archivos qu
 He configurado Docker para que cada vez que se suben los archivos fuentes a Github se construya de nuevo:  
 
 ![autoDesploysOnHeroku](../img/autoDocker.gif)
-![desployDocker](../img/docker.png)  
+![desployDocker](../img/dockerFile.png)  
 
 Esperará a que pasen los test del repositorio antes de construir la imagen.
 
