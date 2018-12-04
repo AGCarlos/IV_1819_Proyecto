@@ -36,7 +36,7 @@ CMD ["python", "app.py"]
 Cómo la aplicación utiliza Redis, para conectarse necesita una variable de entorno, que ha sido especificada en el Dockerfile, pero se asigna en tiempo de ejecución de manera que no se vulnere la clave, podemos verlo en el apartado de variables del Dockerfile. Los mismos comentarios del archivo lo explican.  
 Además se añade el archivo .dockerignore para que no se copien los archivos que no sean necesarios a la imagen.
 ##### Construcción automatizada de la imagen
-He configurado Docker para que cada vez que se suben los archivos fuentes a Github se construya de nuevo:  
+He configurado Docker para que cada vez que se suben los archivos fuentes a Github se construya de nuevo, utilizando el Dockerfile:  
 
 ![autoDesploysOnHeroku](../img/autoDocker.gif)
 ![desployDocker](../img/dockerFile.png)  
