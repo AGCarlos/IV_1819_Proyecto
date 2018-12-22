@@ -9,7 +9,7 @@ class FileDownload:
     def conexion(self):
         """Connect to Redis"""
 
-        r = redis.from_url(os.environ["REDIS_URL"])
+        r = redis.from_url(os.environ['REDIS_URL'])
         return r
 
     def checkUser(self,user,r):
