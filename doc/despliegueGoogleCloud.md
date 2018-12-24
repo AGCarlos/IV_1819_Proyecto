@@ -50,7 +50,7 @@ Además, sin variables de entorno indicamos:
 - El usuario que podrá conectarse por SSH
 - El path a las claves SSH
 
-##### Provisionamiento con Ansible
+#### Provisionamiento con Ansible
 Podemos aprender como utilizar ansible en el siguiente [enlace](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#basics
 ). Por último en el Vagrantfile indicamos el provisionamiento indicando el directorio donde se encuentra el **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:
 ```
@@ -97,7 +97,7 @@ Con estos dos archivos, podemos realizar la creación de la máquina y despliegu
 ![vagrantProvision](../img/vagrantProvision.png)  
 
 Una vez hemos realizado esto, podemos realizar un ping a la IP de la máquina y comprobar que está funcionando.
-##### Despliegue con Fabric
+#### Despliegue con Fabric
 Por último, para desplegar nuestra aplicación en la máquina y poner a funcionar el servidor vamos a utilizar Fabric, que nos permite definir ciertas funciones que luego se ejecutarán en nuestra máquina, que he definido en el siguiente archivo **fabfile.py**:
 ```
 # Import Fabric's API module
