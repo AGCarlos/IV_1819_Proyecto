@@ -35,5 +35,10 @@ Encontramos la aplicación desplegada en [Heroku](https://dashboard.heroku.com/a
 Encontramos la aplicación desplegada en Heroku con Docker, que se puede encontrar en el siguiente enlace:
 - Enlace a DockerHub: App en [DockerHub](https://hub.docker.com/r/carlosag/iv_1819_proyecto/)
 - Contenedor: [Aplicación en Heroku](https://filecnc-docker.herokuapp.com/status)
+
+### Despliegue en IaaS
+Encontramos la aplicación desplegada con Google Cloud en la siguiente IP:
+- Despliegue final: 35.184.220.234
+
 ### Documentación
 Encontramos la documentación [aquí](./doc/README.md)
