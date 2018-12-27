@@ -62,14 +62,6 @@ Podemos aprender como utilizar ansible en el siguiente [enlace](https://docs.ans
   - name: Actualizar máquina
     command: sudo apt-get update
 
-  - name: Agregar repo python 3.6
-    become: true
-    apt_repository: repo=ppa:deadsnakes/ppa state=present
-
-  - name: Instalar Python 3.6
-    become: true
-    apt: pkg=python3.6 state=present
-
   - name: Instalar Git
     command: sudo apt-get install -y git
 
@@ -84,7 +76,6 @@ Podemos aprender como utilizar ansible en el siguiente [enlace](https://docs.ans
 
 ```
 Vemos que instalamos:
-- Python (previamente añadimos el repo para poder descargarlo)
 - Git
 - Pip3  
 
