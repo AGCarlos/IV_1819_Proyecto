@@ -139,7 +139,7 @@ fab -f fabfile.py deploy
 
 En la anterior captura podemos ver como al ejecutar la orden, obtiene del archivo el host y usuario y conecta a la máquina con éxito, posteriormente ejecutando el comando para levantar el servidor
 
-Ya podemos acceder a la aplicación a través de la IP: [**35.184.220.234**](35.184.220.234).  
+Ya podemos acceder a la aplicación a través de la IP: **35.184.220.234**.  
 
 Para aprender a utilizar Fabric podemos consultar la propia [documentación](http://docs.fabfile.org/en/1.14/index.html), donde se explica como realizar todo lo hecho en este fabfile:
 - Como enviar ordenes a nuestra máquina (a través de las funciones): en este [enlace](http://docs.fabfile.org/en/1.14/tutorial.html#task-arguments)
