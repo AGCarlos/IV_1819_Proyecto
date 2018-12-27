@@ -142,7 +142,7 @@ En la anterior captura podemos ver como al ejecutar la orden, obtiene del archiv
 Ya podemos acceder a la aplicación a través de la IP: **35.184.220.234**.  
 
 Para aprender a utilizar Fabric podemos consultar la propia [documentación](http://docs.fabfile.org/en/1.14/index.html), donde se explica como realizar todo lo hecho en este fabfile:
-- Como enviar ordenes a nuestra máquina (a través de las funciones): en este [enlace](http://docs.fabfile.org/en/1.14/tutorial.html#task-arguments)
+- Como enviar ordenes a nuestra máquina para poder iniciar nuestro servidor (a través de las funciones): en este [enlace](http://docs.fabfile.org/en/1.14/tutorial.html#making-connections)
 - Como definir el host y el usuario al que conectar para no tener que ponerlo en la orden fab: en este [enlace](http://docs.fabfile.org/en/1.14/tutorial.html#defining-connections-beforehand)
 - Como definir variables de entorno: en este [enlace](http://docs.fabfile.org/en/1.14/api/core/context_managers.html#fabric.context_managers.shell_env) (necesarias para el funcionamiento de la aplicación)
 
