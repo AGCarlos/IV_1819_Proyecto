@@ -15,7 +15,7 @@ En esta configuración realizamos:
 ![credenciales](../img/credenciales.png)  
  - En este paso nos descargamos un archivos con los credenciales necesarios para el despliegue con Vagrant
 
-Para desplegar y crear desde cero nuestra aplicación en una máquina de tipo IaaS, vamos a usar [Vagrant](https://www.vagrantup.com/), [Ansible](https://www.ansible.com/) y Fabric.
+Para desplegar y crear desde cero nuestra aplicación en una máquina de tipo IaaS, vamos a usar [Vagrant](https://www.vagrantup.com/), [Ansible](https://www.ansible.com/) y [Flightplan](https://github.com/pstadler/flightplan).
 
 ### Orquestamiento con Vagrant
 Con Vagrant vamos a crear y levantar las máquinas virtuales en Google Cloud utilizando el siguiente archivo **Vagrantfile**:
@@ -97,54 +97,55 @@ Con estos dos archivos, podemos realizar la creación de la máquina y despliegu
 ![vagrantProvision](../img/vagrantProvision.png)  
 
 Una vez hemos realizado esto, podemos realizar un ping a la IP de la máquina y comprobar que está funcionando.
-#### Despliegue con Fabric
-Por último, para desplegar nuestra aplicación en la máquina y poner a funcionar el servidor vamos a utilizar [Fabric](http://docs.fabfile.org/en/1.14/index.html), que nos permite ejecutar órdenes en el terminal bash de nuestra máquina a través de SSH, que he definido en el siguiente archivo **fabfile.py**:
+#### Despliegue con Flightplan
+Por último, para desplegar nuestra aplicación en la máquina y poner a funcionar el servidor vamos a utilizar [Flightplan](https://github.com/pstadler/flightplan), que nos permite ejecutar órdenes en el terminal bash de nuestra máquina a través de SSH, que he definido en el siguiente archivo [**flightplan.js**](https://github.com/AGCarlos/IV_1819_Proyecto/blob/master/despliegue/flightplan.js):
 ```
-from fabric.api import *
-import os
+// flightplan.js
+var plan = require('flightplan');
 
-env.hosts = ['35.184.220.234']
-env.user = "carlosivjj"
-ruta= "./app"
+// configuration
+plan.target('staging', {
+  host: '35.184.220.234',
+  username: 'carlosivjj',
+  agent: process.env.SSH_AUTH_SOCK
+});
 
-# Elimina el repositorio si ya estaba creado y lo vuelve a clonar para actualizarlo
-def prepare_deploy():
-
-    run('sudo rm -rf app')
-    run('git clone https://github.com/AGCarlos/IV_1819_Proyecto.git app')
-    run('pip3 install -r app/requirements.txt')
-
-# Inicia la app en la maquina
-def deploy():
-
-    with shell_env( REDIS_URL=os.environ['REDIS_URL'] ):
-        with cd(ruta):
-            run('sudo gunicorn app:app -b 0.0.0.0:80')
-
+// run commands on the target's remote hosts
+plan.remote(function(remote) {
+    remote.log('Ejecutar el servidor gunicorn');
+    var folder = 'app';
+    remote.exec('cd ' + folder + ' && sudo gunicorn app:app -b 0.0.0.0:80');
+});
 ```  
-En este archivo definimos tres variables:
-- **env.hosts**: El host al que vamos a conectarnos y mandar las órdenes
-- **env.user**: El usuario al que conectarnos en el host  
-- **ruta**: La ruta donde se encuentra la aplicación en la máquina
+En este archivo definimos varias variables:
+- **plan**: nos permite usar todas las funciones de Flightplan
 
-Y tenemos dos funciones:
-- **prepare_deploy**: Elimina el repositorio y lo vuelve a descargar para obtener cualquier actualización del mismo
-- **deploy**: Iniciar el servidor _gunicorn_ para servir nuestra app en el puerto 80 a través de la siguiente IP: 35.184.220.234  
+Asociadas al plan:
+- **host**: El host al que vamos a conectarnos y mandar las órdenes
+- **username**: El usuario al que conectarnos en el host  
 
-Para iniciar nuestra aplicación realizamos:  
+Y definimos una función para desplegar nuestra aplicación:
 ```
-fab -f fabfile.py deploy
-```
-![fabfile](../img/fabfileExec.png)  
+plan.remote(function(remote) {
+    remote.log('Ejecutar el servidor gunicorn');
+    var folder = 'app';
+    remote.exec('cd ' + folder + ' && sudo gunicorn app:app -b 0.0.0.0:80');
+});
+```  
+- Con _remote_ especificamos que las órdenes se van a ejecutar en la máquina remota
+- Usamos la _funcion log_ para imprimir mensajes por consola y la _función exec_ para ejecutar nuestras órdenes
 
-En la anterior captura podemos ver como al ejecutar la orden, obtiene del archivo el host y usuario y conecta a la máquina con éxito, posteriormente ejecutando el comando para levantar el servidor
+Para iniciar nuestra aplicación realizamos ``fly staging``, que va a utilizar por defecto el archivo _flightplan.js_.  
+
+![flightplan](../img/flightplan.png)  
+
+En la anterior captura podemos ver como se utiliza ese archivo flightplan.js para iniciar el servidor.
 
 Ya podemos acceder a la aplicación a través de la IP: **35.184.220.234**.  
 
-Para aprender a utilizar Fabric podemos consultar la propia [documentación](http://docs.fabfile.org/en/1.14/index.html), donde se explica como realizar todo lo hecho en este fabfile:
-- Como enviar ordenes a nuestra máquina para poder iniciar nuestro servidor (a través de las funciones): en este [enlace](http://docs.fabfile.org/en/1.14/tutorial.html#making-connections)
-- Como definir el host y el usuario al que conectar para no tener que ponerlo en la orden fab: en este [enlace](http://docs.fabfile.org/en/1.14/tutorial.html#defining-connections-beforehand)
-- Como definir variables de entorno: en este [enlace](http://docs.fabfile.org/en/1.14/api/core/context_managers.html#fabric.context_managers.shell_env) (necesarias para el funcionamiento de la aplicación)
+Para aprender a usar Flightplan he usado la propia documentación:  
+- [Documentación](https://github.com/pstadler/flightplan)
+- Algún foro para resolver problemas (orden cd no funcionando) [Foro](https://github.com/pstadler/flightplan/issues/2)
 
 ##### Configuraciones adicionales necesarias
 Para el correcto funcionamiento de la aplicación he tenido que realizar los siguientes ajustes.
