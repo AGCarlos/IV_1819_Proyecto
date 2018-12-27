@@ -98,34 +98,54 @@ Con estos dos archivos, podemos realizar la creación de la máquina y despliegu
 
 Una vez hemos realizado esto, podemos realizar un ping a la IP de la máquina y comprobar que está funcionando.
 #### Despliegue con Fabric
-Por último, para desplegar nuestra aplicación en la máquina y poner a funcionar el servidor vamos a utilizar Fabric, que nos permite definir ciertas funciones que luego se ejecutarán en nuestra máquina, que he definido en el siguiente archivo **fabfile.py**:
+Por último, para desplegar nuestra aplicación en la máquina y poner a funcionar el servidor vamos a utilizar [Fabric](http://docs.fabfile.org/en/1.14/index.html), que nos permite ejecutar órdenes en el terminal bash de nuestra máquina a través de SSH, que he definido en el siguiente archivo **fabfile.py**:
 ```
-# Import Fabric's API module
 from fabric.api import *
 import os
 
+env.hosts = ['35.184.220.234']
+env.user = "carlosivjj"
+ruta= "./app"
+
 # Elimina el repositorio si ya estaba creado y lo vuelve a clonar para actualizarlo
-def CrearApp():
+def prepare_deploy():
 
     run('sudo rm -rf app')
     run('git clone https://github.com/AGCarlos/IV_1819_Proyecto.git app')
     run('pip3 install -r app/requirements.txt')
 
 # Inicia la app en la maquina
-def IniciarApp():
+def deploy():
 
-    run('cd app/ && sudo gunicorn app:app -b 0.0.0.0:80')
+    with shell_env( REDIS_URL=os.environ['REDIS_URL'] ):
+        with cd(ruta):
+            run('sudo gunicorn app:app -b 0.0.0.0:80')
 
 ```  
-En este archivo tenemos dos funciones:
-- **CrearApp**: Elimina el repositoro y lo vuelve a descargar para obtener cualquier actualización del mismo
-- **IniciarApp**: Iniciar el servidor gunicorn para servir nuestra app en el puerto 80 a través de la siguiente IP: 35.184.220.234  
+En este archivo definimos tres variables:
+- **env.hosts**: El host al que vamos a conectarnos y mandar las órdenes
+- **env.user**: El usuario al que conectarnos en el host  
+- **ruta**: La ruta donde se encuentra la aplicación en la máquina
+
+Y tenemos dos funciones:
+- **prepare_deploy**: Elimina el repositorio y lo vuelve a descargar para obtener cualquier actualización del mismo
+- **deploy**: Iniciar el servidor _gunicorn_ para servir nuestra app en el puerto 80 a través de la siguiente IP: 35.184.220.234  
 
 Para iniciar nuestra aplicación realizamos:  
 ```
-fab -f fabfile.py -H carlosivjj@35.184.220.234 IniciarApp
+fab -f fabfile.py deploy
 ```
-Ya podemos acceder a la aplicación a través de la IP: **35.184.220.234**
+![fabfile](../img/fabfileExec.png)  
+
+En la anterior captura podemos ver como al ejecutar la orden, obtiene del archivo el host y usuario y conecta a la máquina con éxito, posteriormente ejecutando el comando para levantar el servidor
+
+Ya podemos acceder a la aplicación a través de la IP: [**35.184.220.234**](35.184.220.234).  
+
+Para aprender a utilizar Fabric podemos consultar la propia [documentación](http://docs.fabfile.org/en/1.14/index.html), donde se explica como realizar todo lo hecho en este fabfile:
+- Como enviar ordenes a nuestra máquina (a través de las funciones): en este [enlace](http://docs.fabfile.org/en/1.14/tutorial.html#task-arguments)
+- Como definir el host y el usuario al que conectar para no tener que ponerlo en la orden fab: en este [enlace](http://docs.fabfile.org/en/1.14/tutorial.html#defining-connections-beforehand)
+- Como definir variables de entorno: en este [enlace](http://docs.fabfile.org/en/1.14/api/core/context_managers.html#fabric.context_managers.shell_env) (necesarias para el funcionamiento de la aplicación)
+
 ##### Configuraciones adicionales necesarias
 Para el correcto funcionamiento de la aplicación he tenido que realizar los siguientes ajustes.
 ###### IP estática
