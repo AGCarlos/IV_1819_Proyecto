@@ -52,7 +52,7 @@ Además, sin variables de entorno indicamos:
 
 #### Provisionamiento con Ansible
 Podemos aprender como utilizar ansible en el siguiente [enlace](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#basics
-). Por último en el Vagrantfile indicamos el provisionamiento indicando el directorio donde se encuentra el **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:
+) y en la misma [documentación de Vagrant](https://www.vagrantup.com/docs/provisioning/ansible_intro.html), donde nos indica su sintáxis y como se añade al Vagrantfile. Por último en el Vagrantfile indicamos el provisionamiento indicando el directorio donde se encuentra el **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:
 ```
 - hosts: all
   remote_user: vagrant
@@ -79,9 +79,9 @@ Vemos que instalamos:
 - Git
 - Pip3  
 
-Y además realizamos actualización de la máquina y clonamos el repositorio de nuestra aplicación incluyendo la instalación todos sus requisitos.  
+Utilizamos _become : yes_ para poder utilizar órdenes como sudo entre otras.
 
-Con estos dos archivos, podemos realizar la creación de la máquina y despliegue con los siguientes comandos:
+Y además realizamos actualización de la máquina y clonamos el repositorio de nuestra aplicación incluyendo la instalación todos sus requisitos. Con estos dos archivos, podemos realizar la creación de la máquina y despliegue con los siguientes comandos:
 - Con ``vagrant up --provider=google`` vamos a crear la máquina y provisionarla con las dependencias que hemos especificado, como vemos en la siguiente captura:
 
 ![vagrantUp](../img/vagrantUp.png)
