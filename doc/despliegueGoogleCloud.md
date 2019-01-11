@@ -105,7 +105,7 @@ Por último en el Vagrantfile tenemos que indicar con que vamos a provisionar, e
       - git
       - python3-pip
 
-  - name: Instalar Redis-serverCaptura de pantalla de 2019-01-11 18-06-36
+  - name: Instalar Redis-server
     apt: name=redis-server state=latest update_cache=yes
 
   - name: Comprobar que Redis-server está funcionando
