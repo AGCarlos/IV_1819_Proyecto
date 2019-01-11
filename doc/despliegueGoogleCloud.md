@@ -88,14 +88,28 @@ Por último en el Vagrantfile tenemos que indicar con que vamos a provisionar, e
 
   # Tareas a realizar
   tasks:
-  - name: Actualizar máquina
-    command: sudo apt-get update
 
-  - name: Instalar Git
-    command: sudo apt-get install -y git
+  - name: Instalar aptitude
+    apt:
+      name: aptitude
 
-  - name: Instalar pip3
-    command: sudo apt-get -y install python3-pip
+  - name: Actualización de la máquina
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 43200
+
+  - name: Instalar paquetes necesarios
+    apt: name={{ item }} state=latest
+    with_items:
+      - git
+      - python3-pip
+
+  - name: Instalar Redis-server
+    apt: name=redis-server state=latest update_cache=yes
+
+  - name: Comprobar que Redis-server está funcionando
+    service: name=redis-server state=started
 
   - name: Clonar repositorio de GitHub
     git: repo=https://github.com/AGCarlos/IV_1819_Proyecto.git  dest=app/
@@ -104,7 +118,10 @@ Por último en el Vagrantfile tenemos que indicar con que vamos a provisionar, e
     command: pip3 install -r app/requirements.txt
 ```
 Vemos que:
-- Instalamos Git, Pip3 y además realizamos actualización de la máquina y clonamos el repositorio de nuestra aplicación incluyendo la instalación todos sus requisitos.
+- Instalamos aptitude, necesario para siguiente tarea
+- Actualizamos la máquina donde cache_valid_time nos permite no actualizar si se ha actualizado recientemente, en este caso cada medio día como hemos especificado en segundos.
+- Instalamos Git, Pip3, Redis-server y comprobamos que está en funcionamiento
+- Clonamos el repositorio de nuestra aplicación incluyendo la instalación todos sus requisitos.
 - Utilizamos _become : yes_ para poder utilizar órdenes como sudo entre otras.
 
 Con estos dos archivos, podemos realizar la creación de la máquina:
@@ -116,7 +133,13 @@ Con estos dos archivos, podemos realizar la creación de la máquina:
 
 Podemos ver como toda la configuración que hemos establecido en el Vagrantfile se muestra en la anterior captura al levantar la máquina. Una vez hemos realizado esto, podemos realizar un ping a la IP de la máquina y comprobar que está funcionando.
 
-Para la creación del playbook se utiliza la propia [documetanción de Ansible](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#basics) y la [ayuda de provisionamiento de Vagrant](https://www.vagrantup.com/docs/provisioning/ansible.html).
+Para la creación del playbook se utiliza:
+- La propia [documetanción de Ansible](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#basics)
+- La [ayuda de provisionamiento de Vagrant](https://www.vagrantup.com/docs/provisioning/ansible.html)
+- Y algunos foros:
+ - [Foro1-Stackoverflow](https://stackoverflow.com/questions/41535838/how-to-run-apt-update-and-upgrade-via-ansible-shell)
+ - [Foro2-Medium](https://medium.com/@perwagnernielsen/ansible-tutorial-part-2-installing-packages-41d3ab28337d)
+
 #### Despliegue con Flightplan
 Por último, para desplegar nuestra aplicación en la máquina y poner a funcionar el servidor vamos a utilizar [Flightplan](https://github.com/pstadler/flightplan), que nos permite ejecutar órdenes en el terminal bash de nuestra máquina a través de SSH, que he definido en el siguiente archivo [**flightplan.js**](https://github.com/AGCarlos/IV_1819_Proyecto/blob/master/despliegue/flightplan.js):
 ```
