@@ -21,4 +21,4 @@ Accedemos a ``archivos/file1`` y nos devolvería la información acerca del arch
 
 En este momento están disponibles tres archivos, llamados file1,file2 y file3 en al ruta ``archivos/<archivo>``. Ejemplo: [File1](https://filecnc.herokuapp.com/archivos/file1)
 
-Si los archivos no se visualizaran, se pueden generar entrando en la ruta ``/addFiles``, que los añadirá de nuevo a Redis, debido a que el Add-on para Redis en licencia gratuita de Heroku no mantiene persistencia en algunos casos.  
+Estos archivos de formato JSON están almacenados en Redis, de manera que se realizan consultas al mismo para obtener los archivos, como podemos ver en el [código](https://github.com/AGCarlos/IV_1819_Proyecto/blob/master/fileS.py).

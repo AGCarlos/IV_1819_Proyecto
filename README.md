@@ -38,7 +38,7 @@ Encontramos la aplicación desplegada en Heroku con Docker, que se puede encontr
 
 ### Despliegue en IaaS
 Encontramos la aplicación desplegada con Google Cloud en la siguiente IP:
-- Despliegue final: 35.184.220.234
+- Despliegue final: 35.246.63.201
 
 ### Documentación
 Encontramos la documentación [aquí](./doc/README.md)
