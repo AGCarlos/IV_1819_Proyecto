@@ -3,7 +3,7 @@ var plan = require('flightplan');
 
 // configuration
 plan.target('staging', {
-  host: '35.184.220.234',
+  host: '35.246.63.201',
   username: 'carlosivjj',
   agent: process.env.SSH_AUTH_SOCK
 });

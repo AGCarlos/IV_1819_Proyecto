@@ -1,7 +1,8 @@
-- hosts: all
-  remote_user: vagrant
-  become: yes
+- hosts: all # Hosts permitidos
+  remote_user: vagrant # Usuario de la máquina
+  become: yes # Permitimos el uso de sudo
 
+  # Tareas a realizar
   tasks:
   - name: Actualizar máquina
     command: sudo apt-get update
@@ -12,7 +13,7 @@
   - name: Instalar pip3
     command: sudo apt-get -y install python3-pip
 
-  - name: Clonar repossitorio de GitHub
+  - name: Clonar repositorio de GitHub
     git: repo=https://github.com/AGCarlos/IV_1819_Proyecto.git  dest=app/
 
   - name: Instalar los requisitos del proyecto
