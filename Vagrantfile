@@ -26,6 +26,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision :ansible do |ansible|
+      ansible.compatibility_mode = "2.0" # Acorde con la versión de Ansible 2.5.1
       ansible.playbook = "provision/playbook.yml"
   end
 
