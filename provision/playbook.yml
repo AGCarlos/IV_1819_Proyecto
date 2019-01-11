@@ -4,14 +4,28 @@
 
   # Tareas a realizar
   tasks:
-  - name: Actualizar máquina
-    command: sudo apt-get update
 
-  - name: Instalar Git
-    command: sudo apt-get install -y git
+  - name: Instalar aptitude
+    apt:
+      name: aptitude
 
-  - name: Instalar pip3
-    command: sudo apt-get -y install python3-pip
+  - name: Actualización de la máquina
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 43200
+
+  - name: Instalar paquetes necesarios
+    apt: name={{ item }} state=latest
+    with_items:
+      - git
+      - python3-pip
+
+  - name: Instalar Redis-server
+    apt: name=redis-server state=latest update_cache=yes
+
+  - name: Comprobar que Redis-server está funcionando
+    service: name=redis-server state=started
 
   - name: Clonar repositorio de GitHub
     git: repo=https://github.com/AGCarlos/IV_1819_Proyecto.git  dest=app/
