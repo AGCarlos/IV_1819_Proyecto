@@ -109,7 +109,7 @@ Vemos que:
 
 Con estos dos archivos, podemos realizar la creación de la máquina:
 
-- Con ``vagrant up --provider=google`` vamos a crear la máquina y provisionarla con las dependencias que hemos especificado, como vemos en la siguiente captura:
+- Con ``vagrant up`` vamos a crear la máquina y provisionarla con las dependencias que hemos especificado, como vemos en la siguiente captura:
 
 ![vagrantUp](../img/vagrantUp.png)
 ![vagrantProvision](../img/vagrantProvision.png)
