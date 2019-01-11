@@ -80,12 +80,9 @@ Todas estas opciones de configuración pueden encontrase en el [apartado de conf
 Por último, el apartado de provisionamiento se explica en el siguiente punto.
 
 #### Provisionamiento con Ansible
-<<<<<<< HEAD
- Por último en el Vagrantfile tenemos que indicar con que vamos a provisionar, en este caso Ansible, con el archivo de configuración **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:
-=======
-Podemos aprender como utilizar ansible en el siguiente [enlace](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#basics
-) y en la misma [documentación de Vagrant](https://www.vagrantup.com/docs/provisioning/ansible_intro.html), donde nos indica su sintáxis y como se añade al Vagrantfile. Por último en el Vagrantfile indicamos el provisionamiento indicando el directorio donde se encuentra el **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:
->>>>>>> c9dec6d62feacb4d958a6384da0fe7864f881cc9
+Por último en el Vagrantfile tenemos que indicar con que vamos a provisionar, en este caso Ansible, con el archivo de configuración **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:  
+
+Por último en el Vagrantfile indicamos el provisionamiento indicando el directorio donde se encuentra el **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:
 ```
 - hosts: all # Hosts permitidos
   remote_user: vagrant # Usuario de la máquina
@@ -108,21 +105,13 @@ Podemos aprender como utilizar ansible en el siguiente [enlace](https://docs.ans
   - name: Instalar los requisitos del proyecto
     command: pip3 install -r app/requirements.txt
 ```
-<<<<<<< HEAD
-Vemos que instalamos Git, Pip3 y además realizamos actualización de la máquina y clonamos el repositorio de nuestra aplicación incluyendo la instalación todos sus requisitos.
+Vemos que:
+- Instalamos Git, Pip3 y además realizamos actualización de la máquina y clonamos el repositorio de nuestra aplicación incluyendo la instalación todos sus requisitos.
+- Utilizamos _become : yes_ para poder utilizar órdenes como sudo entre otras.
 
-Con estos dos archivos, podemos realizar la creación de la máquina y despliegue con los siguientes comandos:
-- Con ``vagrant up`` vamos a crear la máquina y provisionarla con las dependencias que hemos especificado, como vemos en la siguiente captura:
-=======
-Vemos que instalamos:
-- Git
-- Pip3
+Con estos dos archivos, podemos realizar la creación de la máquina:
 
-Utilizamos _become : yes_ para poder utilizar órdenes como sudo entre otras.
-
-Y además realizamos actualización de la máquina y clonamos el repositorio de nuestra aplicación incluyendo la instalación todos sus requisitos. Con estos dos archivos, podemos realizar la creación de la máquina y despliegue con los siguientes comandos:
 - Con ``vagrant up --provider=google`` vamos a crear la máquina y provisionarla con las dependencias que hemos especificado, como vemos en la siguiente captura:
->>>>>>> c9dec6d62feacb4d958a6384da0fe7864f881cc9
 
 ![vagrantUp](../img/vagrantUp.png)
 ![vagrantProvision](../img/vagrantProvision.png)
