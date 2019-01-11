@@ -9,7 +9,7 @@ En esta configuración realizamos:
 ![proyecto](../img/proyecto.png)
 
 - La configuración de la API necesaria (Compute Engine), que nos permite crear VM IaaS:
-![computeEngine](../img/compute.png)
+![computeEngine](../img/computeEngine.png)
 
 - La obtención de todos los credenciales necesarios para poder controlar las máquinas desde Vagrant.
 ![credenciales](../img/credenciales.png)
@@ -105,7 +105,7 @@ Por último en el Vagrantfile tenemos que indicar con que vamos a provisionar, e
       - git
       - python3-pip
 
-  - name: Instalar Redis-server
+  - name: Instalar Redis-serverCaptura de pantalla de 2019-01-11 18-06-36
     apt: name=redis-server state=latest update_cache=yes
 
   - name: Comprobar que Redis-server está funcionando
