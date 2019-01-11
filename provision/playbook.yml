@@ -1,7 +1,6 @@
 - hosts: all # Hosts permitidos
   remote_user: vagrant # Usuario de la máquina
   become: yes # Permitimos el uso de sudo
-
   # Tareas a realizar
   tasks:
 
