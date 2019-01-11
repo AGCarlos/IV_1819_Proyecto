@@ -81,8 +81,6 @@ Por último, el apartado de provisionamiento se explica en el siguiente punto.
 
 #### Provisionamiento con Ansible
 Por último en el Vagrantfile tenemos que indicar con que vamos a provisionar, en este caso Ansible, con el archivo de configuración **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:  
-
-Por último en el Vagrantfile indicamos el provisionamiento indicando el directorio donde se encuentra el **playbook.yml**, que es el archivo que vamos a utilizar para instalar todas la dependencias necesarias para que nuestra aplicación funcione, que es el siguiente:
 ```
 - hosts: all # Hosts permitidos
   remote_user: vagrant # Usuario de la máquina
